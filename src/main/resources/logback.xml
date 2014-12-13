@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--Detailed logging for file.-->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <append>true</append>
+        <file>application.log</file>
+        <encoder>
+            <pattern>%-5p\t%d{yyyy-MM-dd HH:mm:ss.SSS}\t%t\t%C\t%mdc\t%m\t%replace(%replace(%ex{full}){"\n", ";"}){"\t",""}%nopex%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--Readable logging for console.-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5p %d{yyyy-MM-dd HH:mm:ss.SSS} - (%mdc\) %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.justinrmiller" level="TRACE" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
