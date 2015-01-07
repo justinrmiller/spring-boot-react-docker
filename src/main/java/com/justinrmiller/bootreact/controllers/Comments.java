@@ -15,7 +15,7 @@ import java.util.List;
  */
 @RestController
 public class Comments {
-    private static Logger log = LoggerFactory.getLogger(Comments.class);
+    private static Logger logger = LoggerFactory.getLogger(Comments.class);
 
     private static List<Comment> COMMENTS = new LinkedList<Comment>();
 
@@ -25,7 +25,7 @@ public class Comments {
             produces = "application/json; charset=utf-8")
     @ResponseBody
     public List<Comment> get() {
-        log.info("Getting all comments");
+        logger.info("Getting all comments");
         return COMMENTS;
     }
 
@@ -35,7 +35,7 @@ public class Comments {
             produces = "application/json")
     @ResponseBody
     public List<Comment> post(@RequestBody Comment comment) {
-        log.info("Comment {}", comment);
+        logger.info("Comment {}", comment);
         COMMENTS.add(comment);
         return COMMENTS;
     }
